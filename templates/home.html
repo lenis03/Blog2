@@ -3,10 +3,13 @@
 {%block title%} Home {%endblock%}
 
 {%block content%}
+    <div class='card'>
+         {%for todo in todos%}
 
-    {%for todo in todos%}
-    <h3> <a href="{%url 'home:detail' todo.id %}">{{todo.title}}</a><br></h3>
+            <h3> <a class="card-body" href="{%url 'home:detail' todo.id %}">{{todo.title}}</a><br></h3>
        
-    {%endfor%}
+        {%endfor%}
+    </div>
+   
 
 {%endblock%}

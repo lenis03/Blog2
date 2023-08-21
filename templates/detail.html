@@ -8,4 +8,5 @@
     <h3>{{todo.title}}</h3>
     <small>{{todo.date_time}}</small>
     <p>{{todo.body}}</p>
+    <a href="{% url 'home:delete' todo.id %}" class="btn btn-danger">Delete</a>
 {%endblock%}
