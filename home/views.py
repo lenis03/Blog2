@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Todo
 
 
-def say_hello(request):
-    return render(request, 'home.html', context={'name': 'Fardin'})
+def home(request):
+    todos = Todo.objects.all()
+    return render(request, 'home.html', context={'todos': todos})
