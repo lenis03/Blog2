@@ -5,9 +5,8 @@
 {%block content%}
 
     {%for todo in todos%}
-       <h2>{{todo.title}}</h2> 
-       <small>{{todo.date_time}}</small>
-       <p>{{todo.body}}</p>
+    <h3> <a href="{%url 'detail' todo.id %}">{{todo.title}}</a><br></h3>
+       
     {%endfor%}
 
 {%endblock%}
