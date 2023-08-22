@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 
 from .models import Blog
-from .forms import BlogCreateForm
+from .forms import BlogCreateForm, BlogUpdateForm
 
 
 def home(request):
@@ -37,3 +37,16 @@ def create(request):
         form = BlogCreateForm()
 
     return render(request, 'home/create.html', {'form': form})
+
+
+def update(request, blog_id):
+    blog = Blog.objects.get(id=blog_id)
+    if request.method == 'POST':
+        form = BlogUpdateForm(request.POST, instance=blog)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Blog updated successfully", 'success')
+            return redirect('home:detail', blog_id)
+    else:
+        form = BlogUpdateForm(instance=blog)
+    return render(request, 'home/update.html', {'form': form})
