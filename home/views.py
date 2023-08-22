@@ -5,23 +5,23 @@ from .models import Blog
 from .forms import BlogCreateForm, BlogUpdateForm
 
 
-def home(request):
+def blog_list(request):
     blogs = Blog.objects.all()
     return render(request, 'home/home.html', context={'blogs': blogs})
 
 
-def detail(request, blog_id):
+def blog_detail(request, blog_id):
     blog = Blog.objects.get(id=blog_id)
     return render(request, 'home/detail.html', context={'blog': blog})
 
 
-def delete(request, blog_id):
+def blog_delete(request, blog_id):
     Blog.objects.get(id=blog_id).delete()
     messages.success(request, 'Blog deleted successfully', 'success')
-    return redirect('home:home_page')
+    return redirect('home:blog_list')
 
 
-def create(request):
+def blog_create(request):
     if request.method == 'POST':
         form = BlogCreateForm(request.POST)
         if form.is_valid():
@@ -32,21 +32,21 @@ def create(request):
                 created=cd['created']
                 )
             messages.success(request, 'Blog created successfully')
-            return redirect('home:home_page')
+            return redirect('home:blog_list')
     else:
         form = BlogCreateForm()
 
     return render(request, 'home/create.html', {'form': form})
 
 
-def update(request, blog_id):
+def blog_update(request, blog_id):
     blog = Blog.objects.get(id=blog_id)
     if request.method == 'POST':
         form = BlogUpdateForm(request.POST, instance=blog)
         if form.is_valid():
             form.save()
             messages.success(request, "Blog updated successfully", 'success')
-            return redirect('home:detail', blog_id)
+            return redirect('home:blog_detail', blog_id)
     else:
         form = BlogUpdateForm(instance=blog)
     return render(request, 'home/update.html', {'form': form})

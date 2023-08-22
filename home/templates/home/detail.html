@@ -8,6 +8,6 @@
     <h3>{{blog.title}}</h3>
     <small>{{blog.created}}</small>
     <p>{{blog.body}}</p>
-    <a href="{% url 'home:delete' blog.id %}" class="btn btn-danger">Delete</a>
-    <a href="{% url 'home:update' blog.id%}" class="btn btn-primary">Update</a>
+    <a href="{% url 'home:blog_delete' blog.id %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'home:blog_update' blog.id%}" class="btn btn-primary">Update</a>
 {%endblock%}
