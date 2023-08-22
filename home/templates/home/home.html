@@ -4,9 +4,9 @@
 
 {%block content%}
     <div class='card'>
-         {%for todo in todos%}
+         {%for blog in blogs%}
 
-            <h3> <a class="card-body" href="{%url 'home:detail' todo.id %}">{{todo.title}}</a><br></h3>
+            <h3> <a class="card-body" href="{%url 'home:detail' blog.id %}">{{blog.title}}</a><br></h3>
        
         {%endfor%}
     </div>

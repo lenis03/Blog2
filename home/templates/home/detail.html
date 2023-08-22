@@ -5,8 +5,8 @@
 {%endblock%}
 
 {%block content%}
-    <h3>{{todo.title}}</h3>
-    <small>{{todo.date_time}}</small>
-    <p>{{todo.body}}</p>
-    <a href="{% url 'home:delete' todo.id %}" class="btn btn-danger">Delete</a>
+    <h3>{{blog.title}}</h3>
+    <small>{{blog.date_time}}</small>
+    <p>{{blog.body}}</p>
+    <a href="{% url 'home:delete' blog.id %}" class="btn btn-danger">Delete</a>
 {%endblock%}
