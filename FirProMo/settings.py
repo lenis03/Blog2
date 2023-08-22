@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # local app
     'home.apps.HomeConfig',
+    'accounts.apps.AccountsConfig',
 
     # third party apps
     'crispy_forms',
